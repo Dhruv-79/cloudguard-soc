@@ -1,36 +1,42 @@
 # Cloud Security Posture & Intelligent Threat Detection Platform (CloudGuard SOC)
 
-A production-grade, full-stack cloud security posture management (CSPM) and intelligent threat detection dashboard designed for enterprise environments.
+A production-grade, full-stack Cloud Security Posture Management (CSPM) and Intelligent Threat Detection Security Operations Center (SOC) dashboard designed for enterprise environments.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- **Real-time Security Posture Scoring:** Automated posture calculation based on resource compliance and critical threat exposure.
-- **Cloud Resource Compliance (CIS Benchmarks):** Monitors S3 buckets, IAM users, security groups, and Lambda functions for misconfigurations (e.g., public read-access, overly permissive security groups).
-- **Intelligent Threat Detection Feed:** Real-time logging of suspicious API calls, IAM privilege escalations, and abnormal data egress.
-- **One-Click Automated Remediation:** Instantly apply corrective security policies to misconfigured cloud resources.
-
----
-
-## 🛠️ Technology Stack
-
-- **Backend:** FastAPI (Python), Uvicorn, Pydantic
-- **Frontend:** React, Vite, Tailwind CSS, Lucide Icons
-- **Architecture:** Microservices-ready REST API with asynchronous evaluation engine
+1. **Real-Time Security Posture Scoring**: Automated security score calculation (0-100%) based on CIS AWS Benchmark compliance and active critical threat exposure.
+2. **Cloud Resource Compliance**: Monitors S3 buckets (public read-access, encryption), IAM users (MFA, permissions), security groups (open ports like 0.0.0.0/0), and Lambda execution roles.
+3. **Intelligent Threat Detection Feed**: Real-time logging and telemetry of suspicious API calls, IAM privilege escalations, and abnormal data egress.
+4. **One-Click Automated Remediation**: Instantly apply corrective security policies and mitigation scripts to misconfigured cloud resources.
+5. **Advanced Search & Risk Filtering**: Filter monitored resources instantly by risk level (Critical, High, Low) or search by name, region, and security issue.
 
 ---
 
-## ⚙️ Running the Application
+## 🛠️ Technology Stack & Architecture
 
-### 1. Start the Backend API
+- **Backend API**: Python **FastAPI**, Uvicorn, Pydantic (High-performance async REST API with CORS middleware and in-memory mock state).
+- **Frontend Dashboard**: **React**, **Vite**, **Tailwind CSS**, **Lucide Icons** (Modern dark glassmorphic SOC theme with PostCSS compilation).
+- **API Endpoints**:
+  - `GET /api/status`: Overall security score, resource counts, and threat summaries.
+  - `GET /api/resources`: List of monitored cloud assets and compliance status.
+  - `GET /api/threats`: Active security alerts and threat telemetry feed.
+  - `POST /api/scan`: Triggers an automated cloud compliance posture scan.
+  - `POST /api/remediate`: Executes automated remediation on a misconfigured resource.
+
+---
+
+## ⚙️ Running the Application Locally
+
+### 1. Start the Backend API (Port 8000)
 ```bash
 cd server
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+python -m pip install -r requirements.txt
+python -m uvicorn main:app --reload --port 8000
 ```
 
-### 2. Start the Frontend Dashboard
+### 2. Start the Frontend Dashboard (Port 3000)
 ```bash
 cd client
 npm install
@@ -48,4 +54,4 @@ Open `http://localhost:3000` in your browser.
 - **Documentation & Portfolio:** Monica Geller (Agent 15)
 
 ---
-*Production Release v1.0.0 — Fully Verified.*
+*Production Release v1.0.0 — Fully Verified & Styled.*
